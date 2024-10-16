@@ -1,15 +1,16 @@
 module.exports = (req, res) => {
 
-    data = {
-        "list_1": "Item 1",
-        "list_2": "Item 2",
-        "list_3": "Item 3",
-        "list_4": "Item 4",
-        "list_5": "Item 5",
-    }
+    const carOptions = [
+        { value: "toyota", label: "Toyota" },
+        { value: "honda", label: "Honda" },
+        { value: "ford", label: "Ford" },
+        { value: "bmw", label: "BMW" },
+        { value: "mercedes", label: "Mercedes" },
+        { value: "audi", label: "Audi" }
+    ];
 
     return res.status(400).json({
         success: true,
-        data: data
+        data: carOptions
     })
 }
