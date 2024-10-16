@@ -6,40 +6,40 @@ const { calc , list } = require("./controller");
 
 const carModels = {
     toyota: {
-        corolla: { id: 1, label: "Corolla" },
-        camry: { id: 2, label: "Camry" },
-        rav4: { id: 3, label: "RAV4" },
-        highlander: { id: 4, label: "Highlander" }
+        0: { id: 1, label: "Corolla" },
+        1: { id: 2, label: "Camry" },
+        2: { id: 3, label: "RAV4" },
+        3: { id: 4, label: "Highlander" }
     },
     honda: {
-        civic: { id: 5, label: "Civic" },
-        accord: { id: 6, label: "Accord" },
-        crv: { id: 7, label: "CR-V" },
-        pilot: { id: 8, label: "Pilot" }
+        0: { id: 5, label: "Civic" },
+        1: { id: 6, label: "Accord" },
+        2: { id: 7, label: "CR-V" },
+        3: { id: 8, label: "Pilot" }
     },
     ford: {
-        fiesta: { id: 9, label: "Fiesta" },
-        focus: { id: 10, label: "Focus" },
-        mustang: { id: 11, label: "Mustang" },
-        explorer: { id: 12, label: "Explorer" }
+        0: { id: 9, label: "Fiesta" },
+        1: { id: 10, label: "Focus" },
+        2: { id: 11, label: "Mustang" },
+        3: { id: 12, label: "Explorer" }
     },
     bmw: {
-        series3: { id: 13, label: "3 Series" },
-        series5: { id: 14, label: "5 Series" },
-        x5: { id: 15, label: "X5" },
-        x3: { id: 16, label: "X3" }
+        0: { id: 13, label: "3 Series" },
+        1: { id: 14, label: "5 Series" },
+        2: { id: 15, label: "X5" },
+        3: { id: 16, label: "X3" }
     },
     mercedes: {
-        cclass: { id: 17, label: "C-Class" },
-        eclass: { id: 18, label: "E-Class" },
-        gla: { id: 19, label: "GLA" },
-        glc: { id: 20, label: "GLC" }
+        0: { id: 17, label: "C-Class" },
+        1: { id: 18, label: "E-Class" },
+        2: { id: 19, label: "GLA" },
+        3: { id: 20, label: "GLC" }
     },
     audi: {
-        a3: { id: 21, label: "A3" },
-        a4: { id: 22, label: "A4" },
-        q5: { id: 23, label: "Q5" },
-        q7: { id: 24, label: "Q7" }
+        0: { id: 21, label: "A3" },
+        1: { id: 22, label: "A4" },
+        2: { id: 23, label: "Q5" },
+        3: { id: 24, label: "Q7" }
     }
 };
 
