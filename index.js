@@ -4,19 +4,60 @@ const port = process.env.PORT || 4000;
 const app = express();
 const { calc , list } = require("./controller");
 
+const carModels = {
+    toyota: {
+        corolla: "Corolla",
+        camry: "Camry",
+        rav4: "RAV4",
+        highlander: "Highlander"
+    },
+    honda: {
+        civic: "Civic",
+        accord: "Accord",
+        crv: "CR-V",
+        pilot: "Pilot"
+    },
+    ford: {
+        fiesta: "Fiesta",
+        focus: "Focus",
+        mustang: "Mustang",
+        explorer: "Explorer"
+    },
+    bmw: {
+        series3: "3 Series",
+        series5: "5 Series",
+        x5: "X5",
+        x3: "X3"
+    },
+    mercedes: {
+        cclass: "C-Class",
+        eclass: "E-Class",
+        gla: "GLA",
+        glc: "GLC"
+    },
+    audi: {
+        a3: "A3",
+        a4: "A4",
+        q5: "Q5",
+        q7: "Q7"
+    }
+};
+
+const carOptions = [
+    { value: "toyota", label: "Toyota" },
+    { value: "honda", label: "Honda" },
+    { value: "ford", label: "Ford" },
+    { value: "bmw", label: "BMW" },
+    { value: "mercedes", label: "Mercedes" },
+    { value: "audi", label: "Audi" }
+];
+
 app.use(express.json());
 
 app.get('/list',list);
 app.get('/cal', calc);
 app.get('/', (req,res)=>{
-    const carOptions = [
-        { value: "toyota", label: "Toyota" },
-        { value: "honda", label: "Honda" },
-        { value: "ford", label: "Ford" },
-        { value: "bmw", label: "BMW" },
-        { value: "mercedes", label: "Mercedes" },
-        { value: "audi", label: "Audi" }
-    ];
+    
     res.status(200).json({
         success:true,
         data: carOptions
@@ -24,57 +65,20 @@ app.get('/', (req,res)=>{
 });
 
 
-app.get('/model', (req,res)=>{
+app.get('/model', (req, res) => {
+    let { model } = req.body;
 
-    let {model} = req.body;
-
-    model = model.toLowerCase();
-
-    const carModels = {
-        toyota: {
-            corolla: "Corolla",
-            camry: "Camry",
-            rav4: "RAV4",
-            highlander: "Highlander"
-        },
-        honda: {
-            civic: "Civic",
-            accord: "Accord",
-            crv: "CR-V",
-            pilot: "Pilot"
-        },
-        ford: {
-            fiesta: "Fiesta",
-            focus: "Focus",
-            mustang: "Mustang",
-            explorer: "Explorer"
-        },
-        bmw: {
-            series3: "3 Series",
-            series5: "5 Series",
-            x5: "X5",
-            x3: "X3"
-        },
-        mercedes: {
-            cclass: "C-Class",
-            eclass: "E-Class",
-            gla: "GLA",
-            glc: "GLC"
-        },
-        audi: {
-            a3: "A3",
-            a4: "A4",
-            q5: "Q5",
-            q7: "Q7"
-        }
-    };
-    
-    console.log(carModels.model)
-    
-    res.status(200).json({
-        success:true,
-        data: carModels.model
-    })
+    if (carModels[model]) {
+        res.status(200).json({
+            success: true,
+            data: carModels[model]
+        });
+    } else {
+        res.status(404).json({
+            success: false,
+            message: "Model not found"
+        });
+    }
 });
 
 
