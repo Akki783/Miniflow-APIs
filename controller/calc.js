@@ -7,7 +7,7 @@ module.exports = (req, res) => {
         console.log(`Travel 3 : ${travel_3}`);
         let totalCost = [travel_1, travel_2, travel_3].reduce((sum, travel) => sum + (travel === "Yes" ? 5000 : (travel === "No" ? 3000 : 0)), 0);
         
-        return res.status(400).json({
+        return res.status(200).json({
             success:true,
             message:`You Have to Pay: ${totalCost}`,
             totalAmount : totalCost
