@@ -1,4 +1,4 @@
-exports.module = (req, res) => {
+module.exports = (req, res) => {
 
     data = {
         "list 1": "Item 1",
