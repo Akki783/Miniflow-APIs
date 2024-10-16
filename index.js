@@ -69,7 +69,7 @@ app.get('/model', (req,res)=>{
         }
     };
     
-    
+    console.log(carModels.model)
     
     res.status(200).json({
         success:true,
