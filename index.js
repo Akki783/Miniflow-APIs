@@ -5,43 +5,44 @@ const app = express();
 const { calc , list } = require("./controller");
 
 const carModels = {
-    toyota: {
-        0: { id: 1, label: "Corolla" },
-        1: { id: 2, label: "Camry" },
-        2: { id: 3, label: "RAV4" },
-        3: { id: 4, label: "Highlander" }
-    },
-    honda: {
-        0: { id: 5, label: "Civic" },
-        1: { id: 6, label: "Accord" },
-        2: { id: 7, label: "CR-V" },
-        3: { id: 8, label: "Pilot" }
-    },
-    ford: {
-        0: { id: 9, label: "Fiesta" },
-        1: { id: 10, label: "Focus" },
-        2: { id: 11, label: "Mustang" },
-        3: { id: 12, label: "Explorer" }
-    },
-    bmw: {
-        0: { id: 13, label: "3 Series" },
-        1: { id: 14, label: "5 Series" },
-        2: { id: 15, label: "X5" },
-        3: { id: 16, label: "X3" }
-    },
-    mercedes: {
-        0: { id: 17, label: "C-Class" },
-        1: { id: 18, label: "E-Class" },
-        2: { id: 19, label: "GLA" },
-        3: { id: 20, label: "GLC" }
-    },
-    audi: {
-        0: { id: 21, label: "A3" },
-        1: { id: 22, label: "A4" },
-        2: { id: 23, label: "Q5" },
-        3: { id: 24, label: "Q7" }
-    }
+    toyota: [
+        { id: 1, label: "Corolla" },
+        { id: 2, label: "Camry" },
+        { id: 3, label: "RAV4" },
+        { id: 4, label: "Highlander" }
+    ],
+    honda: [
+        { id: 5, label: "Civic" },
+        { id: 6, label: "Accord" },
+        { id: 7, label: "CR-V" },
+        { id: 8, label: "Pilot" }
+    ],
+    ford: [
+        { id: 9, label: "Fiesta" },
+        { id: 10, label: "Focus" },
+        { id: 11, label: "Mustang" },
+        { id: 12, label: "Explorer" }
+    ],
+    bmw: [
+        { id: 13, label: "3 Series" },
+        { id: 14, label: "5 Series" },
+        { id: 15, label: "X5" },
+        { id: 16, label: "X3" }
+    ],
+    mercedes: [
+        { id: 17, label: "C-Class" },
+        { id: 18, label: "E-Class" },
+        { id: 19, label: "GLA" },
+        { id: 20, label: "GLC" }
+    ],
+    audi: [
+        { id: 21, label: "A3" },
+        { id: 22, label: "A4" },
+        { id: 23, label: "Q5" },
+        { id: 24, label: "Q7" }
+    ]
 };
+
 
 const carOptions = [
     { value: "toyota", label: "Toyota" },
