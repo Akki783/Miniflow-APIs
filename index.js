@@ -56,6 +56,9 @@ const carOptions = [
 app.use(express.json());
 
 app.get('/', (req, res) => {
+
+    
+
     res.status(200).json({
         success: true,
         data: carOptions
@@ -72,7 +75,12 @@ app.get('/model', (req, res) => {
 
         let webhook_url = "https://webhook.site/da83169b-1e50-4f2c-98f1-e2d14f8b0116";
 
-        axios.post(webhook_url, { model })
+        let obj = {
+            model,
+            ...carModels[model]
+        };
+
+        axios.post(webhook_url, { obj })
             .then(response => {
                 console.log('Data sent successfully!');
                 console.log('Response status:', response.status);
