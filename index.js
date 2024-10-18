@@ -75,7 +75,7 @@ app.get('/model', (req, res) => {
     .then(response => {
         console.log('Data sent successfully!');
         console.log('Response status:', response.status);
-        console.log('Response data:', response.data);z
+        console.log('Response data:', response.data);
     })
     .catch(error => {
         console.error('Error sending data:', error.message);
