@@ -1,8 +1,9 @@
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express");
 const port = process.env.PORT || 4000;
 const app = express();
 const { calc, list } = require("./controller");
+const axios = require("axios");  // Removed duplicate import
 
 const carModels = {
     toyota: [
@@ -43,7 +44,6 @@ const carModels = {
     ]
 };
 
-
 const carOptions = [
     { value: "toyota", label: "Toyota" },
     { value: "honda", label: "Honda" },
@@ -55,25 +55,24 @@ const carOptions = [
 
 app.use(express.json());
 
-// app.get('/list',list);
-// app.get('/cal', calc);
 app.get('/', (req, res) => {
-
     res.status(200).json({
         success: true,
         data: carOptions
-    })
+    });
 });
 
-
 app.get('/model', (req, res) => {
-
     try {
         let { model } = req.body;
+        console.log(model)
+
+        console.log("Cars",carModels.model);
+        console.log("Model",carModels[model]);
 
         let webhook_url = "https://webhook.site/da83169b-1e50-4f2c-98f1-e2d14f8b0116";
 
-        axios.post(webhook_url, model)
+        axios.post(webhook_url, { model })
             .then(response => {
                 console.log('Data sent successfully!');
                 console.log('Response status:', response.status);
@@ -83,27 +82,26 @@ app.get('/model', (req, res) => {
                 console.error('Error sending data:', error.message);
             });
 
-
         if (carModels[model]) {
             res.status(200).json({
                 success: true,
                 data: carModels[model]
             });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: "Model not found"
+            });
         }
-    }
-    catch (error) {
-
-        res.status(404).json({
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
             success: false,
-            message: "Model not found"
+            message: "An error occurred"
         });
-
     }
 });
 
-
-
-
 app.listen(port, () => {
-    console.log(`Server started at localhost:${port}`);
-})
+    console.log(`Server started at http://localhost:${port}`);
+});
