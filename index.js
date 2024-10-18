@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require("express");
 const port = process.env.PORT || 4000;
 const app = express();
-const { calc , list } = require("./controller");
+const { calc, list } = require("./controller");
 
 const carModels = {
     toyota: [
@@ -57,41 +57,47 @@ app.use(express.json());
 
 // app.get('/list',list);
 // app.get('/cal', calc);
-app.get('/', (req,res)=>{
-    
+app.get('/', (req, res) => {
+
     res.status(200).json({
-        success:true,
+        success: true,
         data: carOptions
     })
 });
 
 
 app.get('/model', (req, res) => {
-    let { model } = req.body;
 
-    let webhook_url = "https://webhook.site/da83169b-1e50-4f2c-98f1-e2d14f8b0116";
+    try {
+        let { model } = req.body;
 
-    axios.post(webhook_url, model)
-    .then(response => {
-        console.log('Data sent successfully!');
-        console.log('Response status:', response.status);
-        console.log('Response data:', response.data);
-    })
-    .catch(error => {
-        console.error('Error sending data:', error.message);
-    });
-    
+        let webhook_url = "https://webhook.site/da83169b-1e50-4f2c-98f1-e2d14f8b0116";
 
-    if (carModels[model]) {
-        res.status(200).json({
-            success: true,
-            data: carModels[model]
-        });
-    } else {
+        axios.post(webhook_url, model)
+            .then(response => {
+                console.log('Data sent successfully!');
+                console.log('Response status:', response.status);
+                console.log('Response data:', response.data);
+            })
+            .catch(error => {
+                console.error('Error sending data:', error.message);
+            });
+
+
+        if (carModels[model]) {
+            res.status(200).json({
+                success: true,
+                data: carModels[model]
+            });
+        }
+    }
+    catch (error) {
+
         res.status(404).json({
             success: false,
             message: "Model not found"
         });
+
     }
 });
 
