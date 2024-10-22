@@ -110,6 +110,16 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/carAndModel', (req, res) => {
+
+    res.status(200).json({
+        success: true,
+        cars: carOptions,
+        models: carModels
+    });
+});
+
+
 
 
 app.listen(port, () => {
