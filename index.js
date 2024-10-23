@@ -3,7 +3,8 @@ const express = require("express");
 const port = process.env.PORT || 4000;
 const app = express();
 const { calc, list } = require("./controller");
-const axios = require("axios");  // Removed duplicate import
+const axios = require("axios");
+const data = require("./course.json");
 
 const carModels = {
     toyota: [
@@ -52,6 +53,26 @@ const carOptions = [
     { value: "mercedes", label: "Mercedes" },
     { value: "audi", label: "Audi" }
 ];
+
+/*
+for (const faculty in data) {
+    console.log(`\nFaculty: ${faculty}`);
+    
+    
+    const courses = data[faculty];
+    for (const courseName in courses) {
+        console.log(`\n  Course: ${courseName}`);
+        
+        
+        courses[courseName].forEach((program, index) => {
+            console.log(`\n    Program ${index + 1}:`);
+            for (const key in program) {
+                console.log(`      ${key}: ${program[key]}`);
+            }
+        });
+    }
+}
+*/
 
 app.use(express.json());
 
