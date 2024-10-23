@@ -134,7 +134,7 @@ app.get('/', (req, res) => {
 app.get('/carAndModel', (req, res) => {
 
     const mergedCars = carOptions.map(option => ({
-        value: option.value,
+        value: option.label,
         label: option.label,
         models: carModels[option.value]
     }));
