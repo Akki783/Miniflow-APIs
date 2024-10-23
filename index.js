@@ -133,10 +133,16 @@ app.get('/', (req, res) => {
 
 app.get('/carAndModel', (req, res) => {
 
+    const mergedCars = carOptions.map(option => ({
+        value: option.value,
+        label: option.label,
+        models: carModels[option.value]
+      }));
+      
+
     res.status(200).json({
         success: true,
-        cars: carOptions,
-        models: carModels
+        carsAndModel: mergedCars
     });
 });
 
