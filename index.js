@@ -139,6 +139,7 @@ app.get('/carAndModel', (req, res) => {
         models: carModels[option.value]
       }));
       
+      console.log(mergedCars)
 
     res.status(200).json({
         success: true,
